@@ -12,6 +12,13 @@
     <script src="{{ asset('js/app.js') }}"></script>
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="navbar-nav">
+            <a href="/" class="nav-link">@lang('layouts.app.home')</a>
+            <a href="{{ route('articles.index') }}" class="nav-link">@lang('layouts.app.articles')</a>
+        </div>
+    </nav>
+
     <div class="container mt-4">
         <h1>@yield('header')</h1>
         <div>
