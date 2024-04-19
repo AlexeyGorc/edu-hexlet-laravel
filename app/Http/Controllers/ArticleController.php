@@ -18,4 +18,24 @@ class ArticleController extends Controller
         $articles = Article::findOrFail($id);
         return view('article.show', compact('articles'));
     }
+
+    public function create()
+    {
+        $article = new Article();
+        return view('article.create', compact('article'));
+    }
+
+    public function store(Request $request)
+    {
+        $data = $request->validate([
+            'name' => 'required|unique:articles',
+            'body' => 'required',
+        ]);
+
+        $article = new Article();
+        $article->fill($data);
+        $article->save();
+
+        return redirect()->route('articles.index');
+    }
 }
