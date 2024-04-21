@@ -57,4 +57,13 @@ class ArticleController extends Controller
         $article->save();
         return redirect()->route('articles.index');
     }
+
+    public function destroy($id)
+    {
+        $article = Article::find($id);
+        if ($article) {
+            $article->delete();
+        }
+        return redirect()->route('articles.index');
+    }
 }
